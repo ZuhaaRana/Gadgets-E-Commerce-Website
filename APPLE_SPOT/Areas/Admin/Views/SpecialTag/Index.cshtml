@@ -1,0 +1,38 @@
+﻿@using APPLE__SPOT.Models;
+@model IEnumerable<SpecialTag>
+    @{ ViewData["Title"] = "Index"; }
+
+    <br /><br />
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info">Product Description</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Product</a>
+        </div>
+    </div>
+    <br />
+    <div>
+        <table class="table table-striped border">
+            <tr class="table-info">
+                <th>
+                    @Html.DisplayNameFor(c => c.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(c => c.Name)
+                </th>
+
+
+            </tr>
+            @foreach (var item in Model)
+            {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>
+                <partial name="TagPageButtonPartial" model="@item.Id" />
+            </td>
+        </tr>            
+        }
+        </table>
+    </div>
